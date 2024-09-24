@@ -18,7 +18,7 @@ public class Produto {
 	
 	//Atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_produto") 
 	private Integer id;
 	
@@ -31,7 +31,7 @@ public class Produto {
 	@Column(name = "preco_produto")
 	private double preco;
 	
-	@Column(name = "data_criacao_produto", columnDefinition = "TIMESTAMP")
+	@Column(name = "data_criacao_produto", columnDefinition = "DATETIME")
 	//@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Date dataCriacao;
