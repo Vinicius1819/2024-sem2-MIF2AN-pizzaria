@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.belval.pizzaria.entity.Produto;
 
+//CrudRepository eh parte do Spring Data JPA
 public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
     
     //Select * from Produto where descricao = <parametro>
