@@ -1,6 +1,7 @@
 package com.belval.pizzaria.entity;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -32,9 +33,8 @@ public class Produto {
 	private double preco;
 	
 	@Column(name = "data_criacao_produto", columnDefinition = "DATETIME")
-	//@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
-	private Date dataCriacao;
+	private LocalDateTime dataCriacao;
 	
 	//Método construtor padrão, isto é, sem parâmetros
 	public Produto() {
@@ -42,7 +42,7 @@ public class Produto {
 	}
 
 	//Alt + SHIFT + S > Generate contructor using Fields
-	public Produto(Integer id, String nome, String descricao, double preco, Date dataCriacao) {
+	public Produto(Integer id, String nome, String descricao, double preco, LocalDateTime dataCriacao) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -84,11 +84,11 @@ public class Produto {
 	
 	
 
-	public Date getDataCriacao() {
+	public LocalDateTime getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Date dataCriacao) {
+	public void setDataCriacao(LocalDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
@@ -113,8 +113,9 @@ public class Produto {
 
 	@Override
 	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
-				+ ", dataCriacao=" + dataCriacao + "]";
+				+ ", dataCriacao=" + sdf.format(dataCriacao) + "]";
 	}
 
 	
